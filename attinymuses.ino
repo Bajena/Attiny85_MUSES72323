@@ -4,7 +4,8 @@
 
 // Our ATTiny85 is clocked at 1Mhz.
 // 100kHz seems to be an optimal value here - according to the data sheet the clock shouldn't be higher than 1Mhz.
-static const SPISettings sMusesSpiSettings(100000, MSBFIRST, SPI_MODE2);
+const uint32_t SPI_CLOCK = 100000;
+static const SPISettings sMusesSpiSettings(SPI_CLOCK, MSBFIRST, SPI_MODE2);
 
 // pin definitions
 const int
