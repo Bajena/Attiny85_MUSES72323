@@ -20,8 +20,7 @@ void setup() {
 void writeSpi(uint16_t data) {
   SPI.beginTransaction(sMusesSpiSettings);
   digitalWrite(LATCH_PIN, LOW);
-  SPI.transfer((uint8_t)((data >> 8) & 0xFF));
-  SPI.transfer((uint8_t)((data >> 0) & 0xFF));
+  SPI.transfer16(data);
   digitalWrite(LATCH_PIN, HIGH);
   SPI.endTransaction();
 }
