@@ -17,8 +17,8 @@ static const uint16_t rightChannelConfig = 0b0000110;
 const int
   DATA_PIN(1),   // data in
   CLOCK_PIN(2),  // shift register clock
-  LATCH_PIN(3), // storage register clock (slave select)
-  POT_PIN(A2); // PB4
+  LATCH_PIN(4), // CS
+  POT_PIN(A3); // PB3
 
 // Builds a MUSES72323 packet by combining the volume value and the channel configuration.
 uint16_t buildMusesPacket(uint16_t volumeValue, uint16_t channelConfigValue) {
@@ -55,8 +55,8 @@ void loop() {
 
   // For some reason our potentiometer cannot reach the full range of 0-1023.
   // It seems that 450-850 is the actual range.
-  int minPotentiometerValue = 450;
-  int maxPotentiometerValue = 850;
+  int minPotentiometerValue = 0;
+  int maxPotentiometerValue = 950;
   if (potentiometerValue < minPotentiometerValue) {
     potentiometerValue = minPotentiometerValue;
   }
